@@ -7,7 +7,6 @@ Round One - Pods - Labs Edition
 ## To your newly discovered awesomeness!!!!!!!
 ## We are the film Footloose starring Kevin Bacon in team form!
 ## Together, we triumph throught the exercise waters of past rash, not leaving a permanent scar on our personal domain servers, yet pushing through the brain pain of forgetting why we're here and legalizing study habits in our form law once again!!!
-## Let's ammend these docs together ( e.g.  this.function_-kevin_bacon-.md     <<<< find dat error!!  )
 ## We will cross the finish as a team! And a big win individually!
 ## Let's make jerseys?
 ## Jokes to the former... ( or were they?? How committed is too commited?  -Questions to check yourself with ) 
