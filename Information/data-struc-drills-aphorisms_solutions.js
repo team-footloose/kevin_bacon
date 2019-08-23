@@ -1,5 +1,4 @@
-//TODO: Set the array of objects equal to the variable 'aphorisms'
-var aphorism = [
+var aphorisms = [
     {
         "quote": "Just keep pushing... even with life-mud in your eyes, and a major lack of understanding when it comes to the effect your efforts even have... it may pay off in ways you didn’t see coming (cause I mean, no one can really see that well through life-mud). If you just keep moving, the void has a much harder time swallowing you whole. You have the higher ground...",
         "author": "Halie Koehler"
@@ -246,30 +245,43 @@ var aphorism = [
     }
 ]
 
-
-];
+//TODO: Set the array of objects equal to the variable 'aphorisms'
 
 //TODO: Console.log 'aphorisms'. Explore the data structure. What are some things you notice?
-console.log(aphorism);
+console.log(aphorisms);
+
 //TODO: How do we know this is an array of objects?
-//because it has curly brackets surrounded by square brackets. [{}]
+
 //TODO:How long is this array?
-console.log(aphorism.length);
+console.log("----------------------------------------");
+console.log(aphorisms.length);
+
 //TODO: Assign the first quote/author object to the variable firstQuote. Log the quote from the variable. Log the author from the variable.
-var firstQuoteAuthor = aphorism[0];
-console.log(firstQuoteAuthor);
+var firstQuote = aphorisms[0];
+console.log("----------------------------------------");
+console.log(firstQuote);
+console.log(firstQuote.quote);
+console.log(firstQuote.author);
+
 //TODO: Assign the last quote/author object to the variable lastQuote. Log the quote from the variable. Log the author from the variable.
-var lastQuote = aphorisms[aphorisms.length-1];
-console.log(aphorisms.lastQuote);
-console.log((aphorisms.author);
+var lastQuote = aphorisms[aphorisms.length - 1];
+console.log("----------------------------------------");
+
+console.log(lastQuote);
+console.log(lastQuote.quote);
+console.log(lastQuote.author);
+
 //TODO: Without using a loop, log the first 5 quotes and their author in the format "quote" + "-author"
 //Example: "build something 100 people love, not something 1 million people kind of like -Brian Chesky"
+console.log("----------------------------------------");
+console.log(aphorisms[0].quote + " -" + aphorisms[0].author);
+console.log(aphorisms[1].quote + " -" + aphorisms[1].author);
+console.log(aphorisms[2].quote + " -" + aphorisms[2].author);
+console.log(aphorisms[3].quote + " -" + aphorisms[3].author);
+console.log(aphorisms[4].quote + " -" + aphorisms[4].author);
 
-for (var i = 0; i <= 5; i++){
-    console.log(aphorisms[i]);
-}
 //TODO: After doing this 'manually' why is a loop more beneficial?
-////// Less code; cleaner read.
+
 //TODO: Write a function named 'formatQuote' that accepts an aphorism object and returns a string containing the quote and author in the format "quote" + "-author"
 //Example Input:
 //      {
@@ -277,88 +289,83 @@ for (var i = 0; i <= 5; i++){
 //         "author": "Gary Keller"
 //      }
 //Example Output: What’s the one thing you can do, such that by doing it, everything else will be easier or unnecessary? -Gary Keller"
-function formatQuote(i) {
-    return String(aphorism[i]);
+function formatQuote(aphorismObject){
+    return aphorismObject.quote + " -" + aphorismObject.author;
 }
+console.log("----------------------------------------");
+console.log(formatQuote({
+    "quote": "What’s the one thing you can do, such that by doing it, everything else will be easier or unnecessary?",
+    "author": "Gary Keller"
+}));
+
+
 //TODO: Write a function named getRandomQuote, that accepts the aphorisms array, and returns a string that contains a random quote and author in the format "quote" + "-author".
 
+function getRandomQuote(aphorismsArray){
+    var randomIndex = Math.floor(Math.random() *  (aphorismsArray.length -1));
+
+    var aphorismObject = aphorismsArray[randomIndex]
+    return formatQuote(aphorismObject)
+
+    //OR
+    // return formatQuote(aphorismsArray[randomIndex])
+}
+
+console.log("----------------------------------------");
+console.log(getRandomQuote(aphorisms));;
+
+
 //TODO: Write a function named fiveRandomQuotes, that accepts the aphorisms array and returns an array of five random quotes and authors in the format "quote" + "-author".
+
+function fiveRandomQuotes(aphorismsArray){
+    var newArray = [];
+
+    for(var i = 0; i < 5; i++){
+       newArray.push(getRandomQuote(aphorismsArray));
+    }
+
+    return newArray
+}
+
+console.log("----------------------------------------");
+console.log(fiveRandomQuotes(aphorisms));
 
 //TODO: Write a function named 'anonQuotes' that accepts the aphorisms array and returns an array of aphorism objects of all quotes by 'anonymous'. Each object should contain the following properties: { quote: <QUOTE_HERE>, author: <AUTHOR_HERE>}.
 
+function anonQuotes(aphorismsArray){
+    var newArray = [];
+
+    aphorismsArray.forEach(function (aphorism) {
+        if(aphorism.author === 'anonymous'){
+            var object = {};
+            object.quote = aphorism.quote;
+            object.author = aphorism.author;
+            newArray.push(object);
+        }
+    })
+
+    return newArray;
+}
+    console.log(anonQuotes(aphorisms));
+
 //TODO: Write a function named 'everyOddQuote', that accepts the aphorisms array and returns an array of objects of every odd indexed quote. Each object should contain the following properties: { id: <INDEX_HERE>, quote: <QUOTE_HERE>, author: <AUTHOR_HERE>, rating: <RANDOM_RATING_HERE>}. The random rating should be a number between 1 and 5.
 
-
-
-function getAphorismIndex(pAphorism) {
-    var max = pAphorism.length;
-    var min = 0;
-    return Math.round(Math.random() * (max - min) + min);
+function everyOddQuote(aphorismsArray){
+    var newArray = [];
+    aphorismsArray.forEach(function (aphorism, index) {
+        if(index % 2 === 1){
+            var randomRating = Math.floor(Math.random() *  5) + 1;
+            var object = {};
+            object.id = index;
+            object.quote = aphorism.quote;
+            object.author = aphorism.author;
+            object.randomRating = randomRating;
+            newArray.push(object);
+        }
+    })
+    return newArray
 }
 
-function getRandomRating() {
-    var max = 5;
-    var min = 1;
-    return Math.round(Math.random() * (max - min) + min);
-}
+console.log(everyOddQuote(aphorisms));
 
-//TODO: Write a function named getRandomQuote, that accepts the aphorisms array, and returns a string that contains a random quote
-// and author in the format "quote" + "-author".
-    function getRandomQuote(pAphorism) {
-        var randomIndex = getAphorismIndex(pAphorism);
-        return pAphorism[randomIndex].quote + '-' + pAphorism[randomIndex].author;
 
-    }
-
-// console.log(getRandomQuote(aphorism));
-
-//TODO: Write a function named fiveRandomQuotes, that accepts the aphorisms array and returns an array of five random quotes and authors in the format "quote" + "-author".
-    function fiveRandomQuotes(pAphorism) {
-        var quoteArray = [];
-
-        while (quoteArray.length < 5) {
-            var randomQuote = getRandomQuote(pAphorism);
-            if (quoteArray.indexOf(randomQuote) < 0) quoteArray.push(randomQuote);
-        }
-        return quoteArray;
-    }
-
-// console.log(fiveRandomQuotes(aphorism));
-
-//TODO: Write a function named 'anonQuotes' that accepts the aphorisms array and returns an array of aphorism objects of all quotes by 'anonymous'.
-// Each object should contain the following properties: { quote: <QUOTE_HERE>, author: <AUTHOR_HERE>}.
-    function fiveRandomQuotes(pAphorism) {
-        var quoteArray = [];
-        var author = "";
-        for (var i = 0; i < pAphorism.length; i++) {
-            author = pAphorism[i].author;
-            if (author === 'anonymous') {
-                quoteArray.push({quote: pAphorism[i].quote, author: pAphorism[i].author})
-            }
-        }
-        return quoteArray;
-    }
-
-// console.log(fiveRandomQuotes(aphorism));
-
-//TODO: Write a function named 'everyOddQuote', that accepts the aphorisms array and returns an array of objects of every odd indexed quote.
-// Each object should contain the following properties: { id: <INDEX_HERE>, quote: <QUOTE_HERE>, author: <AUTHOR_HERE>, rating: <RANDOM_RATING_HERE>}.
-// The random rating should be a number between 1 and 5.
-
-    function everyOddQuote(pAphorism) {
-        var quoteArray = [];
-
-        for (var i = 1; i < pAphorism.length; i += 2) {
-            var rating = getRandomRating();
-            var objVar = {
-                id: i,
-                quote: pAphorism[i].quote,
-                author: pAphorism[i].author,
-                rating: rating
-            };
-            quoteArray.push(objVar);
-        }
-        return quoteArray;
-    };
-
-    // console.log(everyOddQuote(aphorism));
