@@ -247,13 +247,14 @@ var aphorism = [
 ];
 
 //TODO: Console.log 'aphorisms'. Explore the data structure. What are some things you notice?
-
+console.log(aphorism);
 //TODO: How do we know this is an array of objects?
-
+//because it has curly brackets surrounded by square brackets. [{}]
 //TODO:How long is this array?
-
+console.log(aphorism.length);
 //TODO: Assign the first quote/author object to the variable firstQuote. Log the quote from the variable. Log the author from the variable.
-
+var firstQuoteAuthor = aphorism[0];
+console.log(firstQuoteAuthor);
 //TODO: Assign the last quote/author object to the variable lastQuote. Log the quote from the variable. Log the author from the variable.
 
 //TODO: Without using a loop, log the first 5 quotes and their author in the format "quote" + "-author"
