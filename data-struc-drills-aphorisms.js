@@ -259,12 +259,17 @@ console.log(aphorism.length);
 var firstQuoteAuthor = aphorism[0];
 console.log(firstQuoteAuthor);
 //TODO: Assign the last quote/author object to the variable lastQuote. Log the quote from the variable. Log the author from the variable.
-
+var lastQuote = aphorisms[aphorisms.length-1];
+console.log(aphorisms.lastQuote);
+console.log((aphorisms.author);
 //TODO: Without using a loop, log the first 5 quotes and their author in the format "quote" + "-author"
 //Example: "build something 100 people love, not something 1 million people kind of like -Brian Chesky"
 
+for (var i = 0; i <= 5; i++){
+    console.log(aphorisms[i]);
+}
 //TODO: After doing this 'manually' why is a loop more beneficial?
-
+////// Less code; cleaner read.
 //TODO: Write a function named 'formatQuote' that accepts an aphorism object and returns a string containing the quote and author in the format "quote" + "-author"
 //Example Input:
 //      {
@@ -272,7 +277,9 @@ console.log(firstQuoteAuthor);
 //         "author": "Gary Keller"
 //      }
 //Example Output: What’s the one thing you can do, such that by doing it, everything else will be easier or unnecessary? -Gary Keller"
-
+function formatQuote(i) {
+    return String(aphorism[i]);
+}
 //TODO: Write a function named getRandomQuote, that accepts the aphorisms array, and returns a string that contains a random quote and author in the format "quote" + "-author".
 
 //TODO: Write a function named fiveRandomQuotes, that accepts the aphorisms array and returns an array of five random quotes and authors in the format "quote" + "-author".
