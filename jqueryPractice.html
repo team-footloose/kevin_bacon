@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        // 1.  Use a jQuery method to change the value of an image's src attribute to "myimage.jpg".
+     $(img).attr("src", "myimage.jpg");
+
+        //2.  Use jQuery to change the text of a link to "Demo",
+        //
+        //     and change the value of href's attribute value to "www.espn.com".
+
+        $("#myLink").text("Demo");
+        $("#myLink").attr("href", "https://www.espn.com");
+
+        // 3. Use a jQuery method to insert the text "YES!" at the beginning of a <p> element.
+
+        $("p").prepend("yes");
+
+        // 4. Use a jQuery method to remove all <div> elements with class="test" and class="demo".
+
+        $("div").remove(".test", ".demo");
+    });
+
+   // 5. Use a jQuery method to toggle between adding and removing the "important" class from the <p> element on click.
+    $("p").click(function () {
+       $(this).toggleClass("important");
+    });
+
+</script>
+</body>
+</html>
